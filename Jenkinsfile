@@ -13,7 +13,7 @@ pipeline{
                     image 'maven'
 
                 }
-            
+            }
             steps{
 
                 script{
@@ -23,7 +23,7 @@ pipeline{
                     sh 'mvn clean package sonar:sonar'
                 }
             }
-            }
+            
 
         }
     }
