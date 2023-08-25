@@ -1,18 +1,26 @@
 pipeline{
     agent any
 
+    tools{
+        jdk "Jdk"
+        maven 'maven'
+    }
+
+    environment{
+        SCANNER_HOME=tool 'sonar-scanner'
+    }
+
     stages{
 
         stage ("sonar quality status"){ 
 
-            agent{
-                docker{
-                    image "maven"
-                }
-            }
+            
             steps{
 
-                withSonarQubeEnv(credentialsId: 'sonar-tokan') {
+                withSonarQubeEnv('sonar-server') {
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Petclinic \
+                    -Dsonar.java.binaries=. \
+                    -Dsonar.projectKey=demo-counter '''
 
                 sh 'mvm clean package sonar:sonar'
 
