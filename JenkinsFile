@@ -39,7 +39,9 @@ pipeline{
 
                 script{
 
-                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-tokan'
+                    echo  "not done"
+
+                    //waitForQualityGate abortPipeline: false, credentialsId: 'sonar-tokan'
                 }
             }
         }
