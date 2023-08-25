@@ -18,8 +18,8 @@ pipeline{
             steps{
 
                 withSonarQubeEnv('sonar-server') {
-                    sh ''' mvm clean compile
-                    $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Petclinic \
+                    sh ''' mvn clean compile
+                    $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=demo-counter \
                     -Dsonar.java.binaries=. \
                     -Dsonar.projectKey=demo-counter '''
 
