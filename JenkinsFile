@@ -19,7 +19,7 @@ pipeline{
 
                 withSonarQubeEnv('sonarqube-server') {
                     sh ''' mvn clean compile
-                    $SCANNER_HOME/bin/ -Dsonar.projectName=demo-counter \
+                    $SCANNER_HOME/bin/sonarqube-Scanner -Dsonar.projectName=demo-counter \
                     -Dsonar.java.binaries=. \
                     -Dsonar.projectKey=demo-counter '''
 
